@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5875e930262b78a49a54f75d97c78141
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pellet: {instanceID: 0}
+  - barrelExit: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - shotClip: {fileID: 8300000, guid: 829140c39df8a0648a09f45f9fc07a79, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

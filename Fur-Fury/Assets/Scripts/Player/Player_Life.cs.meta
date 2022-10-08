@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 1d874719d3096d54ea0a3742e1e32226
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dieClip: {fileID: 8300000, guid: f5814478b91c36b4e96840e8021856f0, type: 3}
+  - hitClip: {fileID: 8300000, guid: 176dcb3f25f7bd94798d89550544fa4c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
