@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Life : MonoBehaviour
 {
     [SerializeField] private int life;
 
     [Header("FX")]
-    [SerializeField] private AudioClip dieClip;
     [SerializeField] private AudioClip hitClip;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI playerLifeText;
+    [SerializeField] private Sprite[] lifeSprites;
+    [SerializeField] private Image playerLifeImage;
 
     private AudioSource _audiosrc;
     private GameManager _game;
@@ -23,7 +25,8 @@ public class Player_Life : MonoBehaviour
     {
         _audiosrc = GetComponent<AudioSource>();
         _game = Camera.main.GetComponent<GameManager>();
-        playerLifeText.text = "Player Life: " + life;
+
+        playerLifeImage.sprite = lifeSprites[life];
     }
 
     public void TakeDamage(int damage)
@@ -31,6 +34,8 @@ public class Player_Life : MonoBehaviour
         if (life-damage>0)
         {
             life -= damage;
+            print(life);
+            playerLifeImage.sprite = lifeSprites[life];
             if (hitClip != null)
             {
                 _audiosrc.clip = hitClip;
@@ -40,15 +45,10 @@ public class Player_Life : MonoBehaviour
         }
         else
         {
-            if(dieClip != null)
-            {
-                _audiosrc.clip = dieClip;
-                _audiosrc.Play();
-            }
+            playerLifeImage.sprite = lifeSprites[life];
             _game.RestartGame();
             this.gameObject.SetActive(false);
         }
-        playerLifeText.text = "Player Life: " + life;
     }
 
 }

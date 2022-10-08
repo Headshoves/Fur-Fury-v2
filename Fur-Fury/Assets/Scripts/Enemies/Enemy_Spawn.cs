@@ -21,7 +21,6 @@ public class Enemy_Spawn : MonoBehaviour
 
     [Header("Wave Manipulation")]
     [SerializeField] private int enemiesSpawned = 0;
-    [SerializeField] private float timeToNewHorde = 3f;
 
     [Header("Wave Calibration")]
     [Header("Enemies")]
@@ -39,6 +38,11 @@ public class Enemy_Spawn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI inimigosRestantes;
     [SerializeField] private GameObject newHorde;
 
+    [Header("Sound Control")]
+    private AudioSource source;
+    [SerializeField] private AudioClip finalHorde;
+    [SerializeField] private AudioClip initialHorde;
+
     private int enemiesKilled;
 
     private int _level = 0;
@@ -51,6 +55,9 @@ public class Enemy_Spawn : MonoBehaviour
 
     void Start()
     {
+
+        source = GetComponent<AudioSource>();
+
         for (int i = 0; i < transform.childCount; i++)
         {
             _spawnList.Add(transform.GetChild(i));
@@ -79,13 +86,25 @@ public class Enemy_Spawn : MonoBehaviour
 
     private IEnumerator NewHorde()
     {
+        if(finalHorde != null)
+        {
+            source.clip = finalHorde;
+            source.Play();
+        }
 
+        
         ResetValues();
-        yield return new WaitForSeconds(timeToNewHorde / 2);
+        yield return new WaitForSeconds(finalHorde.length);
 
         newHorde.SetActive(true);
 
-        yield return new WaitForSeconds(timeToNewHorde/2);
+        yield return new WaitForSeconds(initialHorde.length);
+
+        if (initialHorde != null)
+        {
+            source.clip = initialHorde;
+            source.Play();
+        }
 
         NewWaveEnemyNumber();
         newHorde.SetActive(false);

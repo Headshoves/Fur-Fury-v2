@@ -2326,6 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e80424677fb924e9da8a814d6cc189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bearDie: {fileID: 0}
 --- !u!114 &330585552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2338,6 +2339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e80424677fb924e9da8a814d6cc189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bearDie: {fileID: 8300000, guid: f7b1a0f6a6badf24b877370668dd9ef4, type: 3}
 --- !u!1 &356583104
 GameObject:
   m_ObjectHideFlags: 0
@@ -10309,6 +10311,7 @@ GameObject:
   - component: {fileID: 1341739280}
   - component: {fileID: 1341739279}
   - component: {fileID: 1341739281}
+  - component: {fileID: 1341739282}
   m_Layer: 0
   m_Name: SpawnPoints
   m_TagString: Untagged
@@ -10331,13 +10334,14 @@ MonoBehaviour:
   enemyPrefab:
   - {fileID: 1424194066794088275, guid: 2e7636d66d7adec4cb3e30f0f1a7b882, type: 3}
   enemiesSpawned: 0
-  timeToNewHorde: 3
   enemyMultiplier: 1.2
   totalEnemies: 04000000
   timeSpawn: 2
   textWave: {fileID: 813053098}
   inimigosRestantes: {fileID: 1802831665}
   newHorde: {fileID: 1807439939}
+  finalHorde: {fileID: 8300000, guid: 22e63b0109d594b49a43c91f1e3b82e8, type: 3}
+  initialHorde: {fileID: 8300000, guid: d7b9d0500187bac49b88b2bb6524d944, type: 3}
 --- !u!4 &1341739280
 Transform:
   m_ObjectHideFlags: 0
@@ -10377,6 +10381,102 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &1341739282
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341739278}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1366697059
 GameObject:
   m_ObjectHideFlags: 0
@@ -12197,7 +12297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1592300514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12926,8 +13026,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5618c1e74560ffe4090abcb5147e30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 4
   bercoLifeText: {fileID: 1767995888}
+  lifeSprites:
+  - {fileID: 21300000, guid: 817382441a8986041bd64fc43f0c088e, type: 3}
+  - {fileID: 21300000, guid: de50959972ea652438915cc78e4b784f, type: 3}
+  - {fileID: 21300000, guid: 821cc92feed2560468e81cd3adb44fb3, type: 3}
+  - {fileID: 21300000, guid: 8f08f81c83ca4ca49a70877f2820102f, type: 3}
+  - {fileID: 21300000, guid: 4fb76c3e46b67204f81d99e12e0dccb5, type: 3}
+  bercoLifeImage: {fileID: 1755805416}
 --- !u!4 &1646293706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d007c6d3f17edd44aad2735ad1963535,
@@ -13591,7 +13698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1767995887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15434,7 +15541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 23.299988, y: -13.700012}
+  m_AnchoredPosition: {x: 23.300049, y: -13.700012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2001992230
@@ -16301,7 +16408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 33.700012, y: -216.40001}
+  m_AnchoredPosition: {x: 33.69995, y: -216.40002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2078375089
@@ -18200,9 +18307,64 @@ PrefabInstance:
       objectReference: {fileID: 1025894283}
     - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
         type: 3}
+      propertyPath: life
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: dieClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f7b1a0f6a6badf24b877370668dd9ef4, type: 3}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: hitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ac05cf86188307949bba976171de418d, type: 3}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
       propertyPath: playerLifeText
       value: 
       objectReference: {fileID: 1592300514}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: playerLifeImage
+      value: 
+      objectReference: {fileID: 1584177093}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: lifeSprites.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: lifeSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 817382441a8986041bd64fc43f0c088e,
+        type: 3}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: lifeSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: de50959972ea652438915cc78e4b784f,
+        type: 3}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: lifeSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 821cc92feed2560468e81cd3adb44fb3,
+        type: 3}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: lifeSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f08f81c83ca4ca49a70877f2820102f,
+        type: 3}
+    - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
+        type: 3}
+      propertyPath: lifeSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4fb76c3e46b67204f81d99e12e0dccb5,
+        type: 3}
     - target: {fileID: 9160046945250256991, guid: 6da60dab100f89843bfa704e4646fb9e,
         type: 3}
       propertyPath: cadenceTime

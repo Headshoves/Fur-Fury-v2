@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip bearDie;
+    private AudioSource source;
+
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
     public void RestartGame()
     {
         Enemy_Spawn._singleton.Stop();
@@ -14,6 +21,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator EndGame()
     {
+        if (bearDie != null)
+        {
+            source.clip = bearDie;
+            source.Play();
+        }
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Menu");
     }
