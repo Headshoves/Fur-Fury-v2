@@ -33,12 +33,6 @@ public class Damage_Shot : Damage_General
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.TryGetComponent(out Enemy_Life enemy) && canDamage)
-        {
-            enemy.TakeDamage(damageValue);
-            DisableShot();
-        }
-
         if (collision.gameObject.CompareTag("Scenario"))
         {
             canDamage = false;
@@ -47,11 +41,6 @@ public class Damage_Shot : Damage_General
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out Enemy_Life enemy) && canDamage)
-        {
-            enemy.TakeDamage(damageValue);
-            DisableShot();
-        }
 
         if (other.gameObject.CompareTag("Scenario"))
         {

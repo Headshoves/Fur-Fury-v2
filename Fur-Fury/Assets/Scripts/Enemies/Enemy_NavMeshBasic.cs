@@ -14,6 +14,9 @@ public class Enemy_NavMeshBasic : MonoBehaviour
     private Transform _player;
     private Transform _baby;
 
+    private bool isStuned;
+    [SerializeField] private float timeStun;
+
     private Enemy_Life enemyLife;
     void OnEnable()
     {
@@ -26,8 +29,16 @@ public class Enemy_NavMeshBasic : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_coll.enabled && _player.gameObject.activeSelf && _baby.gameObject.activeSelf)
-        _nma.SetDestination(_baby.position);
+        if(!isStuned)
+        {
+            if (_coll.enabled && _player.gameObject.activeSelf && _baby.gameObject.activeSelf)
+                _nma.SetDestination(_baby.position);
+        }
+        else
+        {
+            _nma.Stop();
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,6 +53,14 @@ public class Enemy_NavMeshBasic : MonoBehaviour
             this.gameObject.SetActive(false);
             other.gameObject.GetComponent<Berco_Life>().TakeDamage();
             enemyLife.TakeDamage(9999);
+        }
+
+        if (other.gameObject.TryGetComponent(out Damage_Shot bullet))
+        {
+            if (bullet.GetCanDamage())
+            {
+                StartCoroutine("Stuned");
+            }
         }
     }
 
@@ -58,6 +77,14 @@ public class Enemy_NavMeshBasic : MonoBehaviour
             collision.gameObject.GetComponent<Berco_Life>().TakeDamage();
             enemyLife.TakeDamage(9999);
         }
+
+        if (collision.gameObject.TryGetComponent(out Damage_Shot bullet))
+        {
+            if(bullet.GetCanDamage())
+            {
+                StartCoroutine("Stuned");
+            }
+        }
     }
 
     private IEnumerator Hit()
@@ -69,4 +96,20 @@ public class Enemy_NavMeshBasic : MonoBehaviour
         _nma.isStopped = false;
        //_coll.enabled = true; 
     }
+
+    private IEnumerator Stuned()
+    {   if(!isStuned)
+        {
+            isStuned = true;
+            yield return new WaitForSeconds(timeStun);
+            isStuned = false;
+        }
+    }
+
+    public bool GetStuned()
+    {
+        return isStuned;
+    }
+
+
 }
