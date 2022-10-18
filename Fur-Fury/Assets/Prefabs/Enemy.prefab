@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDownToFollow: 1
   _enemyDamage: 1
+  powerPunch: 20
   timeStun: 5
 --- !u!114 &-2964848237928491212
 MonoBehaviour:

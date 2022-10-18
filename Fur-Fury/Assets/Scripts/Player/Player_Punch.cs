@@ -10,17 +10,14 @@ public class Player_Punch : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private float powerPunch;
 
-    private Transform berco;
-
     private void Start()
     {
-        berco = GameObject.FindGameObjectWithTag("Baby").transform;
     }
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Collider[] hit = Physics.OverlapSphere(transform.position + offset, radius);
 
@@ -30,8 +27,7 @@ public class Player_Punch : MonoBehaviour
                     {
                     if (enemy.GetStuned())
                         {
-                            enemy.gameObject.GetComponent<Rigidbody>().AddForce(enemy.transform.position - berco.transform.position * powerPunch, ForceMode.Impulse);
-                        print("hitou");
+                        enemy.Punch();
                         }
                     }
             }

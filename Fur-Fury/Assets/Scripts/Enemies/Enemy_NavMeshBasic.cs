@@ -1,18 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Enemy_NavMeshBasic : MonoBehaviour
 {
     [SerializeField] private float coolDownToFollow = 1f;
     [SerializeField] private int _enemyDamage = 1;
+    [SerializeField] private float powerPunch = 2f;
     
     private NavMeshAgent _nma;
+    private Rigidbody _rigidbody;
     private Collider _coll;
     private Transform _player;
     private Transform _baby;
+
 
     private bool isStuned;
     [SerializeField] private float timeStun;
@@ -23,6 +28,7 @@ public class Enemy_NavMeshBasic : MonoBehaviour
         _nma = GetComponent<NavMeshAgent>();
         _coll = GetComponent<Collider>();
         enemyLife = GetComponent<Enemy_Life>();
+        _rigidbody = GetComponent<Rigidbody>();
         _baby = GameObject.Find("Berco").transform;
         _player = GameObject.Find("Player").transform;
     }
@@ -31,19 +37,20 @@ public class Enemy_NavMeshBasic : MonoBehaviour
     {
         if(!isStuned)
         {
+            _nma.isStopped = false;
             if (_coll.enabled && _player.gameObject.activeSelf && _baby.gameObject.activeSelf)
                 _nma.SetDestination(_baby.position);
         }
         else
         {
-            _nma.Stop();
+            _nma.isStopped = true;
         }
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isStuned)
         {
             StartCoroutine(Hit());
         }
@@ -60,29 +67,7 @@ public class Enemy_NavMeshBasic : MonoBehaviour
             if (bullet.GetCanDamage())
             {
                 StartCoroutine("Stuned");
-            }
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(Hit());
-        }
-
-        if (collision.gameObject.CompareTag("Baby"))
-        {
-            this.gameObject.SetActive(false);
-            collision.gameObject.GetComponent<Berco_Life>().TakeDamage();
-            enemyLife.TakeDamage(9999);
-        }
-
-        if (collision.gameObject.TryGetComponent(out Damage_Shot bullet))
-        {
-            if(bullet.GetCanDamage())
-            {
-                StartCoroutine("Stuned");
+                bullet.gameObject.SetActive(false);
             }
         }
     }
@@ -90,11 +75,9 @@ public class Enemy_NavMeshBasic : MonoBehaviour
     private IEnumerator Hit()
     {
         _player.gameObject.GetComponent<Player_Life>().TakeDamage(_enemyDamage);
-        //_coll.enabled = false;
         _nma.isStopped = true;
         yield return new WaitForSeconds(coolDownToFollow);
         _nma.isStopped = false;
-       //_coll.enabled = true; 
     }
 
     private IEnumerator Stuned()
@@ -111,5 +94,26 @@ public class Enemy_NavMeshBasic : MonoBehaviour
         return isStuned;
     }
 
+    public void SetStuned(bool stuned) { isStuned = stuned; }
 
+    public void Punch()
+    {
+        StartCoroutine("IEPunch");
+    }
+
+    private IEnumerator IEPunch()
+    {
+        Stuned();
+        _nma.acceleration = 0;
+        _nma.speed = 0;
+        enemyLife.TakeDamage(1);
+        _rigidbody.AddForce((transform.position - _player.transform.position).normalized * powerPunch, ForceMode.Impulse);
+        yield return new WaitForSeconds(1f);
+        _rigidbody.isKinematic = true;
+        isStuned = false;
+        yield return new WaitForSeconds(0.1f);
+        _rigidbody.isKinematic = false;
+        _nma.acceleration = 3.5f;
+        _nma.speed = 8f;
+    }
 }

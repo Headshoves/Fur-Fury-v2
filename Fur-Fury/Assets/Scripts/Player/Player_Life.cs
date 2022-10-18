@@ -31,10 +31,9 @@ public class Player_Life : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (life-damage>0)
+       /* if (life-damage>0)
         {
             life -= damage;
-            print(life);
             playerLifeImage.sprite = lifeSprites[life];
             if (hitClip != null)
             {
@@ -48,7 +47,6 @@ public class Player_Life : MonoBehaviour
             playerLifeImage.sprite = lifeSprites[life];
             _game.RestartGame();
             this.gameObject.SetActive(false);
-        }
-    }
+        }*/    }
 
 }

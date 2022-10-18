@@ -7,16 +7,19 @@ public class Enemy_Life : MonoBehaviour
     [SerializeField] private int life;
     [SerializeField] private AudioClip clip;
 
+    private Enemy_NavMeshBasic enemyNav;
     private AudioSource source;
 
     private void Start()
     {
         source = GetComponent<AudioSource>();
+        enemyNav = GetComponent<Enemy_NavMeshBasic>();
     }
 
     public void TakeDamage(int damage)
     {
         life -= damage;
+        enemyNav.SetStuned(false);
         if (life<=0)
         {
             this.gameObject.SetActive(false);
