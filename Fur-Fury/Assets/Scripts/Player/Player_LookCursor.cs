@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Player_LookCursor : MonoBehaviour
 {
-
-    private void FixedUpdate()
+    private void Update()
     {
         Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -15,6 +14,5 @@ public class Player_LookCursor : MonoBehaviour
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
         
-        Debug.DrawLine(transform.position, hit.point, Color.magenta);
     }
 }

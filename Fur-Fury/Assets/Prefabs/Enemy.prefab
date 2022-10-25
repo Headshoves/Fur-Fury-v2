@@ -55,6 +55,8 @@ MonoBehaviour:
   coolDownToFollow: 1
   _enemyDamage: 1
   powerPunch: 20
+  _enemyBabyRange: 15
+  cooldownAttack: 4
   timeStun: 5
 --- !u!114 &-2964848237928491212
 MonoBehaviour:

@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class Player_Life : MonoBehaviour
 {
+    //Life Count
     [SerializeField] private int life;
 
-    [Header("FX")]
+    //Sound
+    [Header("Sound")]
     [SerializeField] private AudioClip hitClip;
 
+    //UI Control
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI playerLifeText;
     [SerializeField] private Sprite[] lifeSprites;
@@ -31,10 +34,12 @@ public class Player_Life : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-       /* if (life-damage>0)
+        life -= damage;
+        playerLifeImage.sprite = lifeSprites[life];
+        print(life);
+
+        if (life>0)
         {
-            life -= damage;
-            playerLifeImage.sprite = lifeSprites[life];
             if (hitClip != null)
             {
                 _audiosrc.clip = hitClip;
@@ -44,9 +49,9 @@ public class Player_Life : MonoBehaviour
         }
         else
         {
-            playerLifeImage.sprite = lifeSprites[life];
             _game.RestartGame();
             this.gameObject.SetActive(false);
-        }*/    }
+        }    
+    }
 
 }

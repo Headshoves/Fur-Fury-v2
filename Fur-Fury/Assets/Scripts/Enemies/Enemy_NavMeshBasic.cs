@@ -8,6 +8,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class Enemy_NavMeshBasic : MonoBehaviour
 {
+    [Header("Gerais")]
     [SerializeField] private float coolDownToFollow = 1f;
     [SerializeField] private int _enemyDamage = 1;
     [SerializeField] private float powerPunch = 2f;
@@ -18,9 +19,18 @@ public class Enemy_NavMeshBasic : MonoBehaviour
     private Transform _player;
     private Transform _baby;
 
+    
+    
+    [Header("Para atacar o berço")]
+    [SerializeField] private float _enemyBabyRange = 3f;
+    [SerializeField] private float cooldownAttack = 2f;
 
-    private bool isStuned;
+    private float _babyDistance;
+    private bool _enemyInRange;
+
+    [Header("Stun")]
     [SerializeField] private float timeStun;
+    private bool isStuned;
 
     private Enemy_Life enemyLife;
     void OnEnable()
@@ -33,19 +43,33 @@ public class Enemy_NavMeshBasic : MonoBehaviour
         _player = GameObject.Find("Player").transform;
     }
 
+    private void Update()
+    {
+        _babyDistance = Vector3.Distance(this.transform.position, _baby.position);
+    }
+
     private void FixedUpdate()
     {
-        if(!isStuned)
-        {
-            _nma.isStopped = false;
-            if (_coll.enabled && _player.gameObject.activeSelf && _baby.gameObject.activeSelf)
-                _nma.SetDestination(_baby.position);
-        }
-        else
+        if(_babyDistance <= _enemyBabyRange && !_enemyInRange)
         {
             _nma.isStopped = true;
+            _enemyInRange = true;
+            StartCoroutine("EnemyAttackBaby");
         }
-        
+
+        if (!_enemyInRange)
+        {
+            if (!isStuned)
+            {
+                _nma.isStopped = false;
+                if (_coll.enabled && _player.gameObject.activeSelf && _baby.gameObject.activeSelf)
+                    _nma.SetDestination(_baby.position);
+            }
+            else
+            {
+                _nma.isStopped = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,19 +79,12 @@ public class Enemy_NavMeshBasic : MonoBehaviour
             StartCoroutine(Hit());
         }
 
-        if (other.CompareTag("Baby"))
-        {
-            this.gameObject.SetActive(false);
-            other.gameObject.GetComponent<Berco_Life>().TakeDamage();
-            enemyLife.TakeDamage(9999);
-        }
-
         if (other.gameObject.TryGetComponent(out Damage_Shot bullet))
         {
             if (bullet.GetCanDamage())
             {
                 StartCoroutine("Stuned");
-                bullet.gameObject.SetActive(false);
+                other.gameObject.SetActive(false);
             }
         }
     }
@@ -115,5 +132,16 @@ public class Enemy_NavMeshBasic : MonoBehaviour
         _rigidbody.isKinematic = false;
         _nma.acceleration = 3.5f;
         _nma.speed = 8f;
+    }
+
+    private IEnumerator EnemyAttackBaby()
+    {
+        yield return new WaitForSeconds(cooldownAttack);
+        if(this.gameObject.activeSelf)
+        {
+            print("o " + this.gameObject.name + "atacou");
+            _baby.GetComponent<Berco_Life>().TakeDamage();
+            StartCoroutine("EnemyAttackBaby");
+        }
     }
 }

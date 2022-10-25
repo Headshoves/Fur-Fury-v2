@@ -1,8 +1,5 @@
-using System;
-using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_Fire : MonoBehaviour
@@ -12,25 +9,25 @@ public class Player_Fire : MonoBehaviour
     [SerializeField] private GameObject pellet;
     [SerializeField] private Transform barrelExit;
 
-    private Animator anim;
-
     [Header("Polling")]
     [SerializeField] private int shotsAmount = 20;
-    private List<GameObject> bullets;
+    private List<GameObject> _bullets;
 
     [Header("Cadence")]
     [SerializeField] private float cadenceTime = 0.1f;
     private bool _canShot = true;
 
+    //Components
+    private Animator anim;
 
     private void Awake()
     {
-        bullets = new List<GameObject>();
+        _bullets = new List<GameObject>();
         for (int i = 0; i < shotsAmount; i++)
         {
             GameObject obj = Instantiate(pellet);
             obj.SetActive(false);
-            bullets.Add(obj);
+            _bullets.Add(obj);
         }
     }
 
@@ -57,14 +54,14 @@ public class Player_Fire : MonoBehaviour
 
     private GameObject GetBullet()
     {
-        for (int i = 0; i < bullets.Count; i++)
+        for (int i = 0; i < _bullets.Count; i++)
         {
-            if (!bullets[i].activeInHierarchy)
+            if (!_bullets[i].activeInHierarchy)
             {
-                bullets[i].transform.position = barrelExit.position;
-                bullets[i].transform.rotation = barrelExit.rotation;
-                bullets[i].SetActive(true);
-                return bullets[i];
+                _bullets[i].transform.position = barrelExit.position;
+                _bullets[i].transform.rotation = barrelExit.rotation;
+                _bullets[i].SetActive(true);
+                return _bullets[i];
             }
         }
         return null;

@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Damage_Shot : Damage_General
 {
+    //General
     [SerializeField] private int damageValue;
     [SerializeField] private float lifeTime = 0.5f;
 
+    //Components
     private Rigidbody _rb;
     
     private void OnEnable()
@@ -27,6 +29,7 @@ public class Damage_Shot : Damage_General
     {
         _rb.isKinematic = true;
         _rb.isKinematic = false;
+        _rb.useGravity = false;
         CancelInvoke();
     }
 
@@ -36,16 +39,7 @@ public class Damage_Shot : Damage_General
         if (collision.gameObject.CompareTag("Scenario"))
         {
             canDamage = false;
+            _rb.useGravity = true;
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.gameObject.CompareTag("Scenario"))
-        {
-            canDamage = false;
-        }
-    }
-
 }

@@ -5,15 +5,10 @@ using UnityEngine.UIElements;
 
 public class Player_Punch : MonoBehaviour
 {
-
+    //General
     [SerializeField] private float radius;
     [SerializeField] private Vector3 offset;
     [SerializeField] private float powerPunch;
-
-    private void Start()
-    {
-    }
-
 
     void Update()
     {
@@ -26,9 +21,7 @@ public class Player_Punch : MonoBehaviour
                 if (hit[i].gameObject.TryGetComponent(out Enemy_NavMeshBasic enemy))
                     {
                     if (enemy.GetStuned())
-                        {
                         enemy.Punch();
-                        }
                     }
             }
         }

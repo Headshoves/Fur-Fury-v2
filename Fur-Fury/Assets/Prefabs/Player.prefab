@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 9160046945250256987}
   - component: {fileID: 9160046945250256984}
   - component: {fileID: 9160046945250256991}
+  - component: {fileID: 1441994986}
   - component: {fileID: 9160046945250256990}
   - component: {fileID: 9160046945250256985}
   - component: {fileID: 4676955270591053509}
@@ -83,10 +84,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d874719d3096d54ea0a3742e1e32226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
-  dieClip: {fileID: 8300000, guid: d9cbff40c52c9fc40b1989a2a40446cb, type: 3}
-  hitClip: {fileID: 8300000, guid: d346ae5dab57bb946ba9baf18c1fdf5b, type: 3}
+  life: 4
+  hitClip: {fileID: 8300000, guid: ac05cf86188307949bba976171de418d, type: 3}
   playerLifeText: {fileID: 0}
+  lifeSprites:
+  - {fileID: 21300000, guid: 817382441a8986041bd64fc43f0c088e, type: 3}
+  - {fileID: 21300000, guid: de50959972ea652438915cc78e4b784f, type: 3}
+  - {fileID: 21300000, guid: 821cc92feed2560468e81cd3adb44fb3, type: 3}
+  - {fileID: 21300000, guid: 8f08f81c83ca4ca49a70877f2820102f, type: 3}
+  - {fileID: 21300000, guid: 4fb76c3e46b67204f81d99e12e0dccb5, type: 3}
+  playerLifeImage: {fileID: 0}
   anim: {fileID: 0}
 --- !u!114 &9160046945250256987
 MonoBehaviour:
@@ -100,9 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00381a2c209e2854e8db6c27097c8a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   cam: {fileID: 0}
-  src: {fileID: 4676955270591053509}
+  breakFootstep: 1
   Player_Footsteps: {fileID: 8300000, guid: f5814478b91c36b4e96840e8021856f0, type: 3}
 --- !u!114 &9160046945250256984
 MonoBehaviour:
@@ -131,10 +138,23 @@ MonoBehaviour:
   pelletFireVel: 4000
   pellet: {fileID: 6563271584321982840, guid: 9bffcc1e68e7ff040a89a4f3a590d230, type: 3}
   barrelExit: {fileID: 9160046944768983565}
-  shotsAmount: 100
-  cadenceTime: 1
-  src: {fileID: 4676955270591053509}
-  shot_1: {fileID: 8300000, guid: 829140c39df8a0648a09f45f9fc07a79, type: 3}
+  shotsAmount: 20
+  cadenceTime: 0.2
+--- !u!114 &1441994986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160046945250256981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee852e00403efd4f9a29d7fffb302f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  offset: {x: 0, y: 0, z: 0}
+  powerPunch: 10
 --- !u!136 &9160046945250256990
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -159,7 +179,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 4
   m_Drag: 4
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -175,7 +195,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f5814478b91c36b4e96840e8021856f0, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.61
   m_Pitch: 1
