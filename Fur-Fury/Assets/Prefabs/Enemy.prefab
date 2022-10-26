@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 852613121041613988}
   - component: {fileID: 9106715860907464951}
   - component: {fileID: 5155520861646714}
+  - component: {fileID: 5276272014680519379}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -54,10 +55,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDownToFollow: 1
   _enemyDamage: 1
-  powerPunch: 20
   _enemyBabyRange: 15
   cooldownAttack: 4
-  timeStun: 5
 --- !u!114 &-2964848237928491212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +299,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5276272014680519379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424194066794088275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60af68c65fc03846b2bc62ade3b53a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToStun: 5
+  powerPunch: 20
 --- !u!1001 &8263667889969110965
 PrefabInstance:
   m_ObjectHideFlags: 0

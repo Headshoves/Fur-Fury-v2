@@ -18,9 +18,9 @@ public class Player_Punch : MonoBehaviour
 
             for(int i = 0; i < hit.Length; i++)
             {
-                if (hit[i].gameObject.TryGetComponent(out Enemy_NavMeshBasic enemy))
+                if (hit[i].gameObject.TryGetComponent(out Enemy_Stuned enemy))
                     {
-                    if (enemy.GetStuned())
+                    if (enemy.IsStuned)
                         enemy.Punch();
                     }
             }
