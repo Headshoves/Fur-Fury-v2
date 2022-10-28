@@ -23,6 +23,7 @@ public class Player_Life : MonoBehaviour
     private GameManager _game;
 
     [SerializeField] private Animator anim;
+    [SerializeField] public Animator animPlayer;
 
     void Start()
     {
@@ -45,10 +46,12 @@ public class Player_Life : MonoBehaviour
                 _audiosrc.clip = hitClip;
                 _audiosrc.Play();
                 anim.SetTrigger("hitbb");
+                animPlayer.SetTrigger("hit");
             }
         }
         else
         {
+            animPlayer.SetBool("Dead", true);
             _game.RestartGame();
             this.gameObject.SetActive(false);
         }    

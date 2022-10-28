@@ -38,7 +38,14 @@ public class Player_Fire : MonoBehaviour
 
     private void Update()
     {
+        /*
         if(Input.GetMouseButtonDown(0) && _canShot)
+        {
+            Fire();
+            StartCoroutine(Cadence());
+        }
+        */
+        if (Input.GetMouseButton(0) && _canShot)
         {
             Fire();
             StartCoroutine(Cadence());
