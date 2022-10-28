@@ -33,8 +33,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424194066794088275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0046694, y: 0.38764, z: -0.15588}
-  m_LocalScale: {x: 0.84974, y: 0.84974, z: 0.84974}
+  m_LocalPosition: {x: -0.006098428, y: 0.35863504, z: -0.14846419}
+  m_LocalScale: {x: 0.071159706, y: 0.071159706, z: 0.071159706}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8441095166421661790}
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDownToFollow: 1
   _enemyDamage: 1
-  _enemyBabyRange: 15
+  _enemyBabyRange: 1
   cooldownAttack: 4
 --- !u!114 &-2964848237928491212
 MonoBehaviour:
@@ -81,8 +81,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 0.5
+  m_Acceleration: 1
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1.8
@@ -104,9 +104,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.27
-  m_Height: 2.51
+  m_Height: 4.6789656
   m_Direction: 1
-  m_Center: {x: 0, y: 1.15, z: -0.03}
+  m_Center: {x: 0, y: 2.2194827, z: -0.030000018}
 --- !u!95 &6303355008387944388
 Animator:
   serializedVersion: 4

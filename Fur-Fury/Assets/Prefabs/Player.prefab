@@ -95,6 +95,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4fb76c3e46b67204f81d99e12e0dccb5, type: 3}
   playerLifeImage: {fileID: 0}
   anim: {fileID: 0}
+  animPlayer: {fileID: 0}
 --- !u!114 &9160046945250256987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00381a2c209e2854e8db6c27097c8a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 1.2
   cam: {fileID: 0}
   breakFootstep: 1
   Player_Footsteps: {fileID: 8300000, guid: f5814478b91c36b4e96840e8021856f0, type: 3}
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5875e930262b78a49a54f75d97c78141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pelletFireVel: 4000
+  pelletFireVel: 1000
   pellet: {fileID: 6563271584321982840, guid: 9bffcc1e68e7ff040a89a4f3a590d230, type: 3}
   barrelExit: {fileID: 9160046944768983565}
   shotsAmount: 20
@@ -155,6 +156,7 @@ MonoBehaviour:
   radius: 3
   offset: {x: 0, y: 0, z: 0}
   powerPunch: 10
+  anim: {fileID: 0}
 --- !u!136 &9160046945250256990
 CapsuleCollider:
   m_ObjectHideFlags: 0
