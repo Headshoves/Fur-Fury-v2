@@ -18,6 +18,8 @@ public class Damage_Shot : Damage_General
         Invoke("DisableShot", lifeTime);
         _rb = GetComponent<Rigidbody>();
         canDamage = true;
+
+
     }
 
     private void DisableShot()
@@ -31,6 +33,7 @@ public class Damage_Shot : Damage_General
         _rb.isKinematic = false;
         _rb.useGravity = false;
         CancelInvoke();
+        
     }
 
     private void OnCollisionEnter(Collision collision)

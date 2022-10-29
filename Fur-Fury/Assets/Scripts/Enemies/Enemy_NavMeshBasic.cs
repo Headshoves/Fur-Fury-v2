@@ -19,6 +19,8 @@ public class Enemy_NavMeshBasic : MonoBehaviour
 
     private Enemy_Stuned _enemyStuned;
 
+    public Animator anim;
+
 
     [Header("To attack the crib")]
     [SerializeField] private float _enemyBabyRange = 3f;
@@ -45,12 +47,14 @@ public class Enemy_NavMeshBasic : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_babyDistance <= _enemyBabyRange && !_enemyInRange)
+        if (_babyDistance <= _enemyBabyRange && !_enemyInRange)
         {
             _nma.isStopped = true;
             _enemyInRange = true;
             StartCoroutine("EnemyAttackBaby");
+            anim.SetBool("Attacking", true);
         }
+        
 
         if (!_enemyInRange)
         {

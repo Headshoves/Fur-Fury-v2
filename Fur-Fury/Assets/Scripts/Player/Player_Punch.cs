@@ -23,8 +23,9 @@ public class Player_Punch : MonoBehaviour
                 if (hit[i].gameObject.TryGetComponent(out Enemy_Stuned enemy))
                     {
                     if (enemy.IsStuned)
+                        anim.SetTrigger("Kick");
                         enemy.Punch();
-                    anim.SetTrigger("Kick");
+                    
                 }
             }
         }

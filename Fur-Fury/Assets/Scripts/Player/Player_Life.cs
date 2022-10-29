@@ -41,6 +41,7 @@ public class Player_Life : MonoBehaviour
 
         if (life>0)
         {
+            animPlayer.SetBool("Dead", true);
             if (hitClip != null)
             {
                 _audiosrc.clip = hitClip;
@@ -51,7 +52,6 @@ public class Player_Life : MonoBehaviour
         }
         else
         {
-            animPlayer.SetBool("Dead", true);
             _game.RestartGame();
             this.gameObject.SetActive(false);
         }    

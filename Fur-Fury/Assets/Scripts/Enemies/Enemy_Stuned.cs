@@ -16,6 +16,7 @@ public class Enemy_Stuned : MonoBehaviour
     private Transform _player;
     private Enemy_Life enemyLife;
 
+    public Animator anim;
     private bool _isStuned;
     public bool IsStuned { 
         get { return _isStuned; }
@@ -49,14 +50,17 @@ public class Enemy_Stuned : MonoBehaviour
         if (!_isStuned)
         {
             _isStuned = true;
+            anim.SetBool("Stun", true);
             yield return new WaitForSeconds(timeToStun);
             _isStuned = false;
+            anim.SetBool("Stun", false);
         }
     }
 
     public void Punch()
     {
         StartCoroutine("IEPunch");
+        anim.SetTrigger("Kick");
     }
 
     private IEnumerator IEPunch()
@@ -70,7 +74,7 @@ public class Enemy_Stuned : MonoBehaviour
         _isStuned = true;
         yield return new WaitForSeconds(0.1f);
         _rigidbody.isKinematic = false;
-        _nma.acceleration = 3.5f;
-        _nma.speed = 8f;
+        _nma.acceleration = 0.5f;
+        _nma.speed = 1f;
     }
 }
