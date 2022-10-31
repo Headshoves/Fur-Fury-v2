@@ -50,10 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageValue: 1
   lifeTime: 3
-  shot_1: {fileID: 8300000, guid: ee583a6190fed4e4fb4b59ed1fbc9234, type: 3}
-  shot_2: {fileID: 8300000, guid: d3b0b555a26982c47879405e7e4ddebe, type: 3}
-  shot_3: {fileID: 8300000, guid: 00509a337c211684aa27d9f138d53863, type: 3}
-  _audiosrc: {fileID: 4741388317584632191}
 --- !u!136 &8713528412686308489
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -94,8 +90,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: ee583a6190fed4e4fb4b59ed1fbc9234, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.691
   m_Pitch: 1
   Loop: 0

@@ -39,9 +39,7 @@ public class Player_Fire : MonoBehaviour
     private void Start()
     {
         anim = transform.GetChild(1).GetComponent<Animator>();
-        int index = Random.Range(0, AudioArray.Length);
-        shoot = AudioArray[index];
-        _audiosrc.clip = shoot;
+       
     }
 
     private void Update()
@@ -65,9 +63,10 @@ public class Player_Fire : MonoBehaviour
         GameObject temp = GetBullet();
         temp.GetComponent<Rigidbody>().AddForce(temp.transform.forward * pelletFireVel);
         anim.SetTrigger("Shot");
-       
+        int index = Random.Range(0, AudioArray.Length-1);
+        shoot = AudioArray[index];
+        _audiosrc.clip = shoot;
         _audiosrc.Play();
-
     }
 
     private GameObject GetBullet()
