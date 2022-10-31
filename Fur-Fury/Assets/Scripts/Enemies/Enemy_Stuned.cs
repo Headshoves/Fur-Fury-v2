@@ -16,6 +16,8 @@ public class Enemy_Stuned : MonoBehaviour
     private Transform _player;
     private Enemy_Life enemyLife;
 
+
+
     public Animator anim;
     private bool _isStuned;
     public bool IsStuned { 
@@ -41,6 +43,8 @@ public class Enemy_Stuned : MonoBehaviour
                 print("entrou aqui");
                 StartCoroutine("Stuned");
                 other.gameObject.SetActive(false);
+
+                
             }
         }
     }

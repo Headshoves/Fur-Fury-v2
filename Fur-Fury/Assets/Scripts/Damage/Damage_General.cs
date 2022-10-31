@@ -18,5 +18,6 @@ public class Damage_General : MonoBehaviour
     public bool GetCanDamage()
     {
         return canDamage;
+
     }
 }

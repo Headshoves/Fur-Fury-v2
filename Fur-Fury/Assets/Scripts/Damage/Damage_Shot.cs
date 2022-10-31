@@ -19,7 +19,7 @@ public class Damage_Shot : Damage_General
         _rb = GetComponent<Rigidbody>();
         canDamage = true;
 
-
+            
     }
 
     private void DisableShot()
@@ -44,5 +44,6 @@ public class Damage_Shot : Damage_General
             canDamage = false;
             _rb.useGravity = true;
         }
+      
     }
 }
