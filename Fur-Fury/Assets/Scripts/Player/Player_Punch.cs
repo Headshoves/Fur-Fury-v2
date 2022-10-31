@@ -12,11 +12,19 @@ public class Player_Punch : MonoBehaviour
 
     [SerializeField] private Animator anim;
 
+    public AudioSource _audiosrc;
+    private AudioClip kick;
+    public AudioClip[] kickArray;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Collider[] hit = Physics.OverlapSphere(transform.position + offset, radius);
+            int index = Random.Range(0, kickArray.Length - 1);
+            kick = kickArray[index];
+            _audiosrc.clip = kick;
+            
 
             for (int i = 0; i < hit.Length; i++)
             {
@@ -25,7 +33,7 @@ public class Player_Punch : MonoBehaviour
                     if (enemy.IsStuned)
                         anim.SetTrigger("Kick");
                         enemy.Punch();
-                    
+                        _audiosrc.Play();
                 }
             }
         }
