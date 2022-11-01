@@ -12,9 +12,9 @@ public class Player_Punch : MonoBehaviour
 
     [SerializeField] private Animator anim;
 
-    //public AudioSource _audiosrc;
-    //private AudioClip kick;
-   //public AudioClip[] kickArray;
+    public AudioSource _audiosrc;
+    private AudioClip kick;
+   public AudioClip[] kickArray;
 
     void Update()
     {
@@ -22,17 +22,17 @@ public class Player_Punch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Collider[] hit = Physics.OverlapSphere(transform.position + offset, radius);
-            /* int index = Random.Range(0, kickArray.Length - 1);
+            int index = Random.Range(0, kickArray.Length - 1);
                kick = kickArray[index];
-               _audiosrc.clip = kick;*/
+               _audiosrc.clip = kick;
             for (int i = 0; i < hit.Length; i++)
             {
                 if (hit[i].gameObject.TryGetComponent(out Enemy_Stuned enemy))
                     {
                     if (enemy.IsStuned)
-                       // anim.SetTrigger("Kick");
+                        anim.SetTrigger("Kick");
                         enemy.Punch();
-                       //_audiosrc.Play();
+                       _audiosrc.Play();
                 }
             }
         }
