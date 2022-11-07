@@ -53,9 +53,21 @@ public class Player_Life : MonoBehaviour
         else
         {
             animPlayer.SetBool("Dead", true);
-            _game.RestartGame();
-            this.gameObject.SetActive(false);
+            StartCoroutine(Restart());
         }    
+    }
+
+
+    private IEnumerator Restart()
+    {
+       
+        this.gameObject.GetComponent<Player_Movement>().enabled = false;
+        this.gameObject.GetComponent<Player_Fire>().enabled = false;
+        this.gameObject.GetComponent<Player_LookCursor>().enabled = false;
+
+        yield return new WaitForSeconds(5f);
+        _game.RestartGame();
+
     }
 
 }

@@ -8,8 +8,9 @@ public class menuManager : MonoBehaviour
     // Start is called before the first frame update
 
     public AudioSource _audio;
+    public AudioSource _audio2;
     public AudioClip _PressButton;
-    public float Time = 1f;
+    public float Time = 0.5f;
     void Start()
     {
        
@@ -19,10 +20,11 @@ public class menuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+ 
+
         if (Input.GetKeyDown(KeyCode.Return)) 
 
         {
-
             StartCoroutine(changeScene());
         }
     }
@@ -30,6 +32,7 @@ public class menuManager : MonoBehaviour
     {
         _audio.clip = _PressButton;
         _audio.Play();
+
         yield return new WaitForSeconds(Time);
         SceneManager.LoadScene("SampleScene");
     }

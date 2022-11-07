@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private AudioClip bearDie;
     private AudioSource source;
+    [SerializeField] private Animator _anim;
 
     private void Start()
     {
@@ -15,8 +16,10 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
+
         Enemy_Spawn._singleton.Stop();
         StartCoroutine("EndGame");
+        _anim.SetBool("Dead", true);
     }
 
     private IEnumerator EndGame()
@@ -24,9 +27,10 @@ public class GameManager : MonoBehaviour
         if (bearDie != null)
         {
             source.clip = bearDie;
+            source.loop = false;
             source.Play();
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("Menu");
     }
 

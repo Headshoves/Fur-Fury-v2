@@ -47,6 +47,8 @@ public class Enemy_Spawn : MonoBehaviour
 
     private int _level = 0;
 
+    public Animator _animBB;
+
 
     private void Awake()
     {
@@ -78,6 +80,7 @@ public class Enemy_Spawn : MonoBehaviour
         
         if(enemiesKilled >= totalEnemies[_level])
         {
+            
             StartCoroutine("NewHorde");
         }
     }
@@ -88,8 +91,11 @@ public class Enemy_Spawn : MonoBehaviour
     {
         if(finalHorde != null)
         {
+
             source.clip = finalHorde;
             source.Play();
+            yield return new WaitForSeconds(1f);
+            _animBB.SetTrigger("Comemorando");
         }
 
         

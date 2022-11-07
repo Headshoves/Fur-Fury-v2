@@ -1,4 +1,5 @@
 using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class Berco_Life : MonoBehaviour
     //Life Count
     [SerializeField] private int life = 5;
 
+    public GameObject player;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI bercoLifeText;
@@ -29,5 +31,22 @@ public class Berco_Life : MonoBehaviour
 
         if (life <= 0)
              _game.RestartGame();
+            StartCoroutine(Restart());
+
     }
+
+    private IEnumerator Restart()
+    {
+
+        player.GetComponent<Player_Movement>().enabled = false;
+        player.GetComponent<Player_Fire>().enabled = false;
+        player.GetComponent<Player_LookCursor>().enabled = false;
+
+        yield return new WaitForSeconds(5f);
+        _game.RestartGame();
+
+    }
+
+
+
 }

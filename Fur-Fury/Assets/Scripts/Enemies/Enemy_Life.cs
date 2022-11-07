@@ -22,8 +22,8 @@ public class Enemy_Life : MonoBehaviour
         enemyStuned.IsStuned = false;
         if (life<=0)
         {
-            this.gameObject.SetActive(false);
             Enemy_Spawn._singleton.KillEnemy();
+            this.gameObject.SetActive(false);
         }
     }
 
