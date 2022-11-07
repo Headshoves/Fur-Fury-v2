@@ -43,21 +43,18 @@ public class Enemy_NavMeshBasic : MonoBehaviour
     private void Update()
     {
         _babyDistance = Vector3.Distance(this.transform.position, _baby.position);
-    }
-
-    private void FixedUpdate()
-    {
-        if (_babyDistance <= _enemyBabyRange && !_enemyInRange)
+        
+        if (_babyDistance <= _enemyBabyRange)
         {
             _nma.isStopped = true;
             _enemyInRange = true;
             StartCoroutine("EnemyAttackBaby");
-            anim.SetBool("Attacking", true);
         }
-        
 
         if (!_enemyInRange)
         {
+            StopCoroutine("EnemyAttackBaby");
+            anim.SetBool("Attacking", false);
             if (!_enemyStuned.IsStuned)
             {
                 _nma.isStopped = false;
@@ -68,6 +65,11 @@ public class Enemy_NavMeshBasic : MonoBehaviour
             {
                 _nma.isStopped = true;
             }
+        }
+        else
+        {
+
+            anim.SetBool("Attacking", true);
         }
     }
 
@@ -90,7 +92,7 @@ public class Enemy_NavMeshBasic : MonoBehaviour
     private IEnumerator EnemyAttackBaby()
     {
         yield return new WaitForSeconds(cooldownAttack);
-        if(this.gameObject.activeSelf)
+        if(this.gameObject.activeSelf && !_enemyStuned.IsStuned)
         {
             _baby.GetComponent<Berco_Life>().TakeDamage();
             StartCoroutine("EnemyAttackBaby");

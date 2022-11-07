@@ -40,7 +40,6 @@ public class Enemy_Stuned : MonoBehaviour
         {
             if (bullet.GetCanDamage())
             {
-                print("entrou aqui");
                 StartCoroutine("Stuned");
                 other.gameObject.SetActive(false);
 
@@ -64,7 +63,6 @@ public class Enemy_Stuned : MonoBehaviour
     public void Punch()
     {
         StartCoroutine("IEPunch");
-        anim.SetTrigger("Kick");
     }
 
     private IEnumerator IEPunch()

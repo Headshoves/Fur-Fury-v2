@@ -56,7 +56,7 @@ MonoBehaviour:
   coolDownToFollow: 2
   _enemyDamage: 1
   anim: {fileID: 4000766434210457918}
-  _enemyBabyRange: 0.5
+  _enemyBabyRange: 2
   cooldownAttack: 8
 --- !u!114 &-2964848237928491212
 MonoBehaviour:

@@ -14,7 +14,7 @@ public class Player_Punch : MonoBehaviour
 
     public AudioSource _audiosrc;
     private AudioClip kick;
-   public AudioClip[] kickArray;
+    public AudioClip[] kickArray;
 
     void Update()
     {
@@ -30,9 +30,11 @@ public class Player_Punch : MonoBehaviour
                 if (hit[i].gameObject.TryGetComponent(out Enemy_Stuned enemy))
                     {
                     if (enemy.IsStuned)
+                    {
                         anim.SetTrigger("Kick");
                         enemy.Punch();
-                       _audiosrc.Play();
+                        _audiosrc.Play();
+                    }
                 }
             }
         }
