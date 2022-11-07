@@ -3500,7 +3500,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 70be6f8128e753e47bd4a35f1c2c36e0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.07
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3596,7 +3596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e80424677fb924e9da8a814d6cc189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bearDie: {fileID: 0}
+  bearDie: {fileID: 8300000, guid: 1962b047f7e79de42a061ba9552ab5de, type: 3}
 --- !u!114 &330585552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14632,7 +14632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380469802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.897, y: 5.13, z: -45.656}
+  m_LocalPosition: {x: -12.45, y: -0.67, z: -45.656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20707,7 +20707,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884746206}
-  m_LocalRotation: {x: -0.16498677, y: -0.63106924, z: 0.06987213, w: 0.75475085}
+  m_LocalRotation: {x: -0.16498677, y: -0.6310692, z: 0.06987213, w: 0.7547509}
   m_LocalPosition: {x: 90.82418, y: -5.0386395, z: 4.6185226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21016,7 +21016,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1953443552}
   - component: {fileID: 1953443551}
-  - component: {fileID: 1953443553}
   - component: {fileID: 1953443554}
   - component: {fileID: 1953443555}
   m_Layer: 0
@@ -21083,29 +21082,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 8.831, y: -96.17, z: 0}
---- !u!114 &1953443553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953443550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ApplyAfter: 2
-  m_ChannelMask: 1
-  m_Gain: 1
-  m_Use2DDistance: 0
-  m_UseCameraSpace: 1
-  m_ReactionSettings:
-    m_SecondaryNoise: {fileID: 0}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_Duration: 1
-    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &1953443554
 MonoBehaviour:
   m_ObjectHideFlags: 0
