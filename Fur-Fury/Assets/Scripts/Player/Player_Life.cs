@@ -25,6 +25,8 @@ public class Player_Life : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] public Animator animPlayer;
 
+    public GameObject Lanterna;
+
     void Start()
     {
         _audiosrc = GetComponent<AudioSource>();
@@ -52,6 +54,7 @@ public class Player_Life : MonoBehaviour
         }
         else
         {
+            animPlayer.SetBool("ISRunning", false);
             animPlayer.SetBool("Dead", true);
             StartCoroutine(Restart());
         }    
@@ -64,7 +67,8 @@ public class Player_Life : MonoBehaviour
         this.gameObject.GetComponent<Player_Movement>().enabled = false;
         this.gameObject.GetComponent<Player_Fire>().enabled = false;
         this.gameObject.GetComponent<Player_LookCursor>().enabled = false;
-
+        Lanterna.GetComponent<Light>().enabled = false;
+        
         yield return new WaitForSeconds(5f);
         _game.RestartGame();
 

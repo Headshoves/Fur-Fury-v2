@@ -18,6 +18,8 @@ public class Berco_Life : MonoBehaviour
     //Components
     private GameManager _game;
 
+    public GameObject Lanterna;
+
     private void Start()
     {
         _game = Camera.main.GetComponent<GameManager>();
@@ -41,6 +43,7 @@ public class Berco_Life : MonoBehaviour
         player.GetComponent<Player_Movement>().enabled = false;
         player.GetComponent<Player_Fire>().enabled = false;
         player.GetComponent<Player_LookCursor>().enabled = false;
+        Lanterna.GetComponent<Light>().enabled = false;
 
         yield return new WaitForSeconds(5f);
         _game.RestartGame();
