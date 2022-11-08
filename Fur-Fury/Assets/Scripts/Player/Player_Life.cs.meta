@@ -4,8 +4,13 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - dieClip: {fileID: 8300000, guid: f5814478b91c36b4e96840e8021856f0, type: 3}
-  - hitClip: {fileID: 8300000, guid: 176dcb3f25f7bd94798d89550544fa4c, type: 3}
+  - hitClip: {fileID: 8300000, guid: 5018f52f4cc77c64599f4eafab63c6fc, type: 3}
+  - playerLifeText: {instanceID: 0}
+  - playerLifeImage: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - animPlayer: {instanceID: 0}
+  - _animChanging: {instanceID: 0}
+  - Lanterna: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

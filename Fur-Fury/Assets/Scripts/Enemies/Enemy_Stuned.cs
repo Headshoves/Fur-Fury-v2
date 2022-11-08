@@ -16,13 +16,17 @@ public class Enemy_Stuned : MonoBehaviour
     private Transform _player;
     private Enemy_Life enemyLife;
 
-
+    public AudioSource _srcEnemy;
+    public AudioClip _BoxTimeClip;
+    public AudioClip _EnemyLeaveBoxClip_;
+    public AudioClip _WalkCycleClip;
+    public AudioClip _CloseBoxClip;
 
     public Animator anim;
     private bool _isStuned;
     public bool IsStuned { 
         get { return _isStuned; }
-        set { _isStuned = value; }
+        set { _isStuned = value;}
     }
 
     private void Start()
@@ -31,19 +35,22 @@ public class Enemy_Stuned : MonoBehaviour
         enemyLife = GetComponent<Enemy_Life>();
         _rigidbody = GetComponent<Rigidbody>();
         _player = GameObject.Find("Player").transform;
+        
     }
+ 
 
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.TryGetComponent(out Damage_Shot bullet))
         {
+            _srcEnemy.clip = _CloseBoxClip;
+            _srcEnemy.Play();
             if (bullet.GetCanDamage())
             {
+               
                 StartCoroutine("Stuned");
                 other.gameObject.SetActive(false);
-
-                
             }
         }
     }
@@ -52,11 +59,24 @@ public class Enemy_Stuned : MonoBehaviour
     {
         if (!_isStuned)
         {
+           
+            _srcEnemy.clip = _CloseBoxClip;
+            _srcEnemy.Play();
             _isStuned = true;
             anim.SetBool("Stun", true);
+            yield return new WaitForSeconds(0.5f);
+            _srcEnemy.clip = _BoxTimeClip;
+            _srcEnemy.Play();
             yield return new WaitForSeconds(timeToStun);
             _isStuned = false;
+            _srcEnemy.clip = _EnemyLeaveBoxClip_;
+            _srcEnemy.Play();
             anim.SetBool("Stun", false);
+            yield return new WaitForSeconds(0.5f);
+            _srcEnemy.clip = _WalkCycleClip;
+            _srcEnemy.Play();
+
+
         }
     }
 

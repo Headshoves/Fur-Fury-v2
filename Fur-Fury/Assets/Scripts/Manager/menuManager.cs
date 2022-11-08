@@ -10,7 +10,11 @@ public class menuManager : MonoBehaviour
     public AudioSource _audio;
     public AudioSource _audio2;
     public AudioClip _PressButton;
-    public float Time = 0.5f;
+    public Animator _anim;
+    public Animator _aninChang;
+    public Animator _AudioChanging;
+    public float Time = 3f;
+
     void Start()
     {
        
@@ -25,13 +29,18 @@ public class menuManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return)) 
 
         {
+            
             StartCoroutine(changeScene());
         }
     }
     IEnumerator changeScene() 
     {
+        _anim.SetTrigger("Enter");
         _audio.clip = _PressButton;
         _audio.Play();
+        _aninChang.SetTrigger("Changing");
+        _AudioChanging.SetTrigger("Changing");
+
 
         yield return new WaitForSeconds(Time);
         SceneManager.LoadScene("SampleScene");

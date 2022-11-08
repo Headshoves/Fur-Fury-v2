@@ -22,6 +22,7 @@ public class Enemy_NavMeshBasic : MonoBehaviour
     public Animator anim;
 
 
+
     [Header("To attack the crib")]
     [SerializeField] private float _enemyBabyRange = 3f;
     [SerializeField] private float cooldownAttack = 2f;

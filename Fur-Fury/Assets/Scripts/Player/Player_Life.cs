@@ -24,6 +24,8 @@ public class Player_Life : MonoBehaviour
 
     [SerializeField] private Animator anim;
     [SerializeField] public Animator animPlayer;
+    [SerializeField] public Animator _animChanging;
+
 
     public GameObject Lanterna;
 
@@ -56,6 +58,7 @@ public class Player_Life : MonoBehaviour
         {
             animPlayer.SetBool("ISRunning", false);
             animPlayer.SetBool("Dead", true);
+            _animChanging.SetTrigger("Changing");
             StartCoroutine(Restart());
         }    
     }
@@ -69,7 +72,7 @@ public class Player_Life : MonoBehaviour
         this.gameObject.GetComponent<Player_LookCursor>().enabled = false;
         Lanterna.GetComponent<Light>().enabled = false;
         
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         _game.RestartGame();
 
     }

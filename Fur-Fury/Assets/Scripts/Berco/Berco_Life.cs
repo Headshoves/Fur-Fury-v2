@@ -15,10 +15,13 @@ public class Berco_Life : MonoBehaviour
     [SerializeField] private Sprite[] lifeSprites;
     [SerializeField] private Image bercoLifeImage;
 
+    [SerializeField] public Animator _animChanging;
     //Components
     private GameManager _game;
 
     public GameObject Lanterna;
+
+    [SerializeField] public Animator animPlayer;
 
     private void Start()
     {
@@ -34,6 +37,8 @@ public class Berco_Life : MonoBehaviour
         if (life <= 0)
              _game.RestartGame();
             StartCoroutine(Restart());
+            
+            animPlayer.SetBool("ISRunning", false);
 
     }
 
@@ -44,8 +49,9 @@ public class Berco_Life : MonoBehaviour
         player.GetComponent<Player_Fire>().enabled = false;
         player.GetComponent<Player_LookCursor>().enabled = false;
         Lanterna.GetComponent<Light>().enabled = false;
-
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
+        _animChanging.SetTrigger("Changing");
+        yield return new WaitForSeconds(0.3f);
         _game.RestartGame();
 
     }
