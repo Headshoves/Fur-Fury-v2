@@ -1,18 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Enemy_StunState : Enemy_BaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    private Animator animator;
+
+    private float timeToStun;
+    private float timer;
+
+    public override void EnterState(Enemy_StateManager enemy)
     {
-        
+        timer = 0;
+        timeToStun = enemy.TimeStun;
+
+        animator = enemy.Animator;
+        animator.SetBool("Stun", true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnTriggerEnter(Enemy_StateManager enemy, Collider collision)
     {
-        
+    }
+
+    public override void UpdateState(Enemy_StateManager enemy)
+    {
+        timer += Time.fixedDeltaTime;
+
+        if(timer >= timeToStun)
+        {
+            animator.SetBool("Stun", false);
+            enemy.SwitchState(enemy.followState);
+        }
     }
 }

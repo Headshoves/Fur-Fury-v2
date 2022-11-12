@@ -9,15 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9053147511515817962}
-  - component: {fileID: 6743603913657322659}
-  - component: {fileID: -2964848237928491212}
   - component: {fileID: -3011885099573100211}
   - component: {fileID: 1142108071046618615}
   - component: {fileID: 6303355008387944388}
   - component: {fileID: 852613121041613988}
   - component: {fileID: 9106715860907464951}
   - component: {fileID: 5155520861646714}
+  - component: {fileID: -2964848237928491212}
+  - component: {fileID: 6743603913657322659}
   - component: {fileID: 5276272014680519379}
+  - component: {fileID: 6211167218109485669}
   m_Layer: 2
   m_Name: Enemy
   m_TagString: Enemy
@@ -41,37 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6743603913657322659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424194066794088275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a082e21aaa01f84d96e25ccf4744af0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coolDownToFollow: 2
-  _enemyDamage: 1
-  anim: {fileID: 4000766434210457918}
-  _enemyBabyRange: 2
-  cooldownAttack: 8
---- !u!114 &-2964848237928491212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424194066794088275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bdac43ec1aac144fb7a144ea8356cc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 3
-  clip: {fileID: 8300000, guid: 909af4111b2a59f4fb2431596458823d, type: 3}
 --- !u!195 &-3011885099573100211
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -300,6 +270,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2964848237928491212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424194066794088275}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdac43ec1aac144fb7a144ea8356cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 3
+  clip: {fileID: 8300000, guid: 909af4111b2a59f4fb2431596458823d, type: 3}
+--- !u!114 &6743603913657322659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424194066794088275}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a082e21aaa01f84d96e25ccf4744af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDownToFollow: 2
+  _enemyDamage: 1
+  anim: {fileID: 4000766434210457918}
+  _enemyBabyRange: 2
+  cooldownAttack: 8
 --- !u!114 &5276272014680519379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +308,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424194066794088275}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d60af68c65fc03846b2bc62ade3b53a4, type: 3}
   m_Name: 
@@ -320,6 +321,18 @@ MonoBehaviour:
   _WalkCycleClip: {fileID: 8300000, guid: a41a03f9eb7066740b472d60cd00108b, type: 3}
   _CloseBoxClip: {fileID: 8300000, guid: 5def664e0e49e1f43909f22a03f885cb, type: 3}
   anim: {fileID: 4000766434210457918}
+--- !u!114 &6211167218109485669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424194066794088275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e0dfbb265a0654a8dffa3673e19623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8263667889969110965
 PrefabInstance:
   m_ObjectHideFlags: 0
