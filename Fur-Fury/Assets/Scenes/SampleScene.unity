@@ -18880,7 +18880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5618c1e74560ffe4090abcb5147e30d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 10
+  life: 9
   player: {fileID: 248444738}
   bercoLifeText: {fileID: 813053098}
   lifeSprites:
@@ -26514,7 +26514,7 @@ PrefabInstance:
     - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
         type: 3}
       propertyPath: life
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9160046945250256989, guid: 6da60dab100f89843bfa704e4646fb9e,
         type: 3}
