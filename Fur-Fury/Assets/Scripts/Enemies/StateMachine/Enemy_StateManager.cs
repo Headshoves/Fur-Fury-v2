@@ -18,6 +18,9 @@ public class Enemy_StateManager : MonoBehaviour
     private Rigidbody rb;
     public Rigidbody Rigidbody { get { return rb; } }
 
+    private AudioSource audiosrc;
+    public AudioSource AudioSource { get { return AudioSource; } }
+
     [Header("Enemy Follow Attributes")]
     private NavMeshAgent _nma;
     public NavMeshAgent NMA { get { return _nma; }}
@@ -35,6 +38,8 @@ public class Enemy_StateManager : MonoBehaviour
     [SerializeField] private float timeStun = 5f;
     public float TimeStun { get { return timeStun; }}
     public bool isStuned;
+
+    
 
     [Header("Enemy Attack Attributes")]
     [SerializeField] private float cooldownAttack = 2f;
@@ -58,8 +63,10 @@ public class Enemy_StateManager : MonoBehaviour
         berco = GameObject.Find("Berco").transform;
         bercoLife = berco.GetComponent<Berco_Life>();
         player = GameObject.Find("Player").transform;
-        animator = GetComponent<Animator>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        audiosrc = GetComponent<AudioSource>();
+
 
         currentState.EnterState(this);
     }

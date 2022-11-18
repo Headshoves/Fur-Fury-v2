@@ -7,6 +7,7 @@ public class Enemy_AttackState : Enemy_BaseState
 
     private Berco_Life bercoLife;
     private Animator animator;
+    private AudioSource audiosrc;
 
     public override void EnterState(Enemy_StateManager enemy)
     {
@@ -14,6 +15,7 @@ public class Enemy_AttackState : Enemy_BaseState
 
         cooldownAttack = enemy.CooldownAttack;
         bercoLife = enemy.BercoLife;
+        audiosrc = enemy.AudioSource;
 
         animator.SetBool("Attacking", true);
         Debug.Log("Estado Atacando");

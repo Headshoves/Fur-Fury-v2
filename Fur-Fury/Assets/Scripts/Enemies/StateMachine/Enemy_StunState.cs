@@ -6,6 +6,7 @@ public class Enemy_StunState : Enemy_BaseState
 {
     private Animator animator;
 
+
     private float timeToStun;
     private float timer;
 
@@ -19,6 +20,7 @@ public class Enemy_StunState : Enemy_BaseState
 
         animator.SetBool("Attacking", false);
         animator.SetBool("Stun", true);
+        
 
         Debug.Log("Estado Stun");
     }
@@ -34,6 +36,7 @@ public class Enemy_StunState : Enemy_BaseState
         if(timer >= timeToStun)
         {
             animator.SetBool("Stun", false);
+
             enemy.isStuned = false;
             enemy.SwitchState(enemy.followState);
         }
