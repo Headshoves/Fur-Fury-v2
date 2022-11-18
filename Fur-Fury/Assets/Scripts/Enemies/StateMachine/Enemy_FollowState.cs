@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,6 +6,8 @@ public class Enemy_FollowState : Enemy_BaseState
 {
     private NavMeshAgent nma;
     private Transform berco;
+    private Animator animator;
+    private AudioSource audioSource;
 
     private float enemyBabyRange = 3f;
 
@@ -14,6 +17,12 @@ public class Enemy_FollowState : Enemy_BaseState
     {
         nma = enemy.NMA;
         berco = enemy.Berco;
+        animator = enemy.Animator;
+        audioSource = enemy.AudioSource;
+
+
+        animator.SetBool("Stun", false);
+        animator.SetBool("Attacking", false);
 
         Debug.Log("Estado Follow");
     }

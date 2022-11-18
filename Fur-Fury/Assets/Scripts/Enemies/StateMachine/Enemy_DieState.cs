@@ -6,7 +6,8 @@ public class Enemy_DieState : Enemy_BaseState
 {
     public override void EnterState(Enemy_StateManager enemy)
     {
-
+        Enemy_Spawn._singleton.KillEnemy();
+        enemy.gameObject.SetActive(false);
         Debug.Log("Estado Morte");
     }
 

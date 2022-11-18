@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,7 +20,9 @@ public class Enemy_StateManager : MonoBehaviour
     public Rigidbody Rigidbody { get { return rb; } }
 
     private AudioSource audiosrc;
-    public AudioSource AudioSource { get { return AudioSource; } }
+    public AudioSource AudioSource { get { return audiosrc; } }
+
+    public List<AudioClip> AudioClips = new List<AudioClip>();
 
     [Header("Enemy Follow Attributes")]
     private NavMeshAgent _nma;

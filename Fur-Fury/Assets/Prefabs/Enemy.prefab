@@ -258,7 +258,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e0dfbb265a0654a8dffa3673e19623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeStun: 5
+  AudioClips:
+  - {fileID: 8300000, guid: ef904a1fd9383224abf8932dbffbb756, type: 3}
+  - {fileID: 8300000, guid: 163fca969e1d70b4a8e13d384036a4db, type: 3}
+  - {fileID: 8300000, guid: 5def664e0e49e1f43909f22a03f885cb, type: 3}
+  - {fileID: 8300000, guid: a419c6da56c07d147960316902c2bf53, type: 3}
+  - {fileID: 8300000, guid: e04c2163d1cd9674788db709a933e3e6, type: 3}
+  - {fileID: 8300000, guid: a41a03f9eb7066740b472d60cd00108b, type: 3}
+  - {fileID: 8300000, guid: 74322a3f71b2f0f48835700f88a86495, type: 3}
+  - {fileID: 8300000, guid: 1962b047f7e79de42a061ba9552ab5de, type: 3}
+  - {fileID: 8300000, guid: 5018f52f4cc77c64599f4eafab63c6fc, type: 3}
+  - {fileID: 8300000, guid: d665872cdf0f0cf46a9c4b1eef4bfe9d, type: 3}
+  - {fileID: 8300000, guid: a3889edb77dc5284f84f22de99a2776a, type: 3}
+  - {fileID: 8300000, guid: 9086883d7c7a88b449421c4827daeb2c, type: 3}
+  - {fileID: 8300000, guid: ee583a6190fed4e4fb4b59ed1fbc9234, type: 3}
+  - {fileID: 8300000, guid: d3b0b555a26982c47879405e7e4ddebe, type: 3}
+  - {fileID: 8300000, guid: 00509a337c211684aa27d9f138d53863, type: 3}
+  - {fileID: 8300000, guid: f62e7ac8cc87f404f96ef9aa94065101, type: 3}
+  timeStun: 10
   isStuned: 0
   cooldownAttack: 4
   life: 2
