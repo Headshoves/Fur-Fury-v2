@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8713528412686308489}
   - component: {fileID: -8844331682123692187}
   - component: {fileID: 4741388317584632191}
-  - component: {fileID: 7026920618493550845}
   m_Layer: 0
   m_Name: Shot
   m_TagString: Shot
@@ -177,19 +176,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7026920618493550845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6563271584321982840}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b21a7a20f914b2e4ba4436003b650723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceApplied: 1000
 --- !u!1001 &5363263664839048905
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,10 +9,14 @@ public class Enemy_StateManager : MonoBehaviour
     public Enemy_FollowState followState = new Enemy_FollowState();
     public Enemy_StunState stunState = new Enemy_StunState();
     public Enemy_TakeDamageState takeDamageState = new Enemy_TakeDamageState();
+    public Enemy_DieState dieState = new Enemy_DieState();
 
     [Header("General Components and Attributes")]
     private Animator animator;
     public Animator Animator { get { return animator; } }
+    
+    private Rigidbody rb;
+    public Rigidbody Rigidbody { get { return rb; } }
 
     [Header("Enemy Follow Attributes")]
     private NavMeshAgent _nma;
@@ -30,6 +34,7 @@ public class Enemy_StateManager : MonoBehaviour
     [Header("Enemy Stun Attributes")]
     [SerializeField] private float timeStun = 5f;
     public float TimeStun { get { return timeStun; }}
+    public bool isStuned;
 
     [Header("Enemy Attack Attributes")]
     [SerializeField] private float cooldownAttack = 2f;
@@ -37,6 +42,10 @@ public class Enemy_StateManager : MonoBehaviour
 
     private Berco_Life bercoLife;
     public Berco_Life BercoLife { get { return bercoLife; }}
+
+    [Header("Enemy Life Attributes")]
+    [SerializeField] private int life = 2;
+    public int Life { get { return life; } set { life = value; } }
 
     void Awake()
     {
@@ -49,6 +58,8 @@ public class Enemy_StateManager : MonoBehaviour
         berco = GameObject.Find("Berco").transform;
         bercoLife = berco.GetComponent<Berco_Life>();
         player = GameObject.Find("Player").transform;
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
 
         currentState.EnterState(this);
     }

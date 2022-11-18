@@ -14,6 +14,8 @@ public class Enemy_FollowState : Enemy_BaseState
     {
         nma = enemy.NMA;
         berco = enemy.Berco;
+
+        Debug.Log("Estado Follow");
     }
 
     public override void OnTriggerEnter(Enemy_StateManager enemy, Collider collision)
@@ -36,6 +38,7 @@ public class Enemy_FollowState : Enemy_BaseState
 
         if(babyDistance <= enemyBabyRange)
         {
+            nma.isStopped = true;
             enemy.SwitchState(enemy.attackState);
         }
         else

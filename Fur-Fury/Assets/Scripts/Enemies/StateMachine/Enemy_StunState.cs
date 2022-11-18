@@ -11,11 +11,16 @@ public class Enemy_StunState : Enemy_BaseState
 
     public override void EnterState(Enemy_StateManager enemy)
     {
+        enemy.isStuned = true;
         timer = 0;
         timeToStun = enemy.TimeStun;
 
         animator = enemy.Animator;
+
+        animator.SetBool("Attacking", false);
         animator.SetBool("Stun", true);
+
+        Debug.Log("Estado Stun");
     }
 
     public override void OnTriggerEnter(Enemy_StateManager enemy, Collider collision)
@@ -29,6 +34,7 @@ public class Enemy_StunState : Enemy_BaseState
         if(timer >= timeToStun)
         {
             animator.SetBool("Stun", false);
+            enemy.isStuned = false;
             enemy.SwitchState(enemy.followState);
         }
     }

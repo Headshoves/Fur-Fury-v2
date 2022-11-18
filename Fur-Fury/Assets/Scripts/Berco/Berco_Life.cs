@@ -32,14 +32,17 @@ public class Berco_Life : MonoBehaviour
     public void TakeDamage()
     {
         life--;
-        bercoLifeImage.sprite = lifeSprites[life];
+
+        if(life>=0)
+            bercoLifeImage.sprite = lifeSprites[life];
 
         if (life <= 0)
-             _game.RestartGame();
+        {
+            _game.RestartGame();
             StartCoroutine(Restart());
-            
-            animPlayer.SetBool("ISRunning", false);
 
+            animPlayer.SetBool("ISRunning", false);
+        }
     }
 
     private IEnumerator Restart()

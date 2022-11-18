@@ -27,12 +27,12 @@ public class Player_Punch : MonoBehaviour
                _audiosrc.clip = kick;
             for (int i = 0; i < hit.Length; i++)
             {
-                if (hit[i].gameObject.TryGetComponent(out Enemy_Stuned enemy))
+                if (hit[i].gameObject.TryGetComponent(out Enemy_StateManager enemy))
                     {
-                    if (enemy.IsStuned)
+                    if (enemy.isStuned)
                     {
                         anim.SetTrigger("Kick");
-                        enemy.Punch();
+                        enemy.SwitchState(enemy.takeDamageState);
                         _audiosrc.Play();
                     }
                 }

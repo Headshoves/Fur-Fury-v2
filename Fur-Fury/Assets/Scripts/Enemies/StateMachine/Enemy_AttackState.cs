@@ -6,11 +6,17 @@ public class Enemy_AttackState : Enemy_BaseState
     private float timer;
 
     private Berco_Life bercoLife;
+    private Animator animator;
 
     public override void EnterState(Enemy_StateManager enemy)
     {
+        animator = enemy.Animator;
+
         cooldownAttack = enemy.CooldownAttack;
         bercoLife = enemy.BercoLife;
+
+        animator.SetBool("Attacking", true);
+        Debug.Log("Estado Atacando");
     }
 
     public override void OnTriggerEnter(Enemy_StateManager enemy, Collider collision)
@@ -21,7 +27,6 @@ public class Enemy_AttackState : Enemy_BaseState
         {
             if (other.TryGetComponent(out Damage_Shot bullet))
             {
-                Debug.Log("Foi Stunado e foi para o estado de Stun");
                 enemy.SwitchState(enemy.stunState);
             }
         }
