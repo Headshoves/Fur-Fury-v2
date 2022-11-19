@@ -7,7 +7,7 @@ public class Enemy_FollowState : Enemy_BaseState
     private NavMeshAgent nma;
     private Transform berco;
     private Animator animator;
-    private AudioSource audioSource;
+    private AudioSource audiosrc;
 
     private float enemyBabyRange = 3f;
 
@@ -18,11 +18,13 @@ public class Enemy_FollowState : Enemy_BaseState
         nma = enemy.NMA;
         berco = enemy.Berco;
         animator = enemy.Animator;
-        audioSource = enemy.AudioSource;
-
 
         animator.SetBool("Stun", false);
         animator.SetBool("Attacking", false);
+
+        audiosrc = enemy.AudioSource;
+        audiosrc.clip = enemy.AudioClips[4];
+        audiosrc.Play();
 
         Debug.Log("Estado Follow");
     }

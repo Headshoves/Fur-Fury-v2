@@ -15,7 +15,11 @@ public class Enemy_AttackState : Enemy_BaseState
 
         cooldownAttack = enemy.CooldownAttack;
         bercoLife = enemy.BercoLife;
+
+
         audiosrc = enemy.AudioSource;
+        audiosrc.clip = enemy.AudioClips[2];
+        audiosrc.Play();
 
         animator.SetBool("Attacking", true);
         Debug.Log("Estado Atacando");
@@ -27,6 +31,7 @@ public class Enemy_AttackState : Enemy_BaseState
 
         if (other != null)
         {
+
             if (other.TryGetComponent(out Damage_Shot bullet))
             {
                 enemy.SwitchState(enemy.stunState);

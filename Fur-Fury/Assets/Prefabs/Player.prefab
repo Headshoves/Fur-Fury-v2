@@ -98,6 +98,8 @@ MonoBehaviour:
   playerLifeImage: {fileID: 0}
   anim: {fileID: 0}
   animPlayer: {fileID: 0}
+  _animChanging: {fileID: 0}
+  Lanterna: {fileID: 0}
 --- !u!114 &9160046945250256987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.5
-  offset: {x: -10, y: 0, z: 0}
-  powerPunch: 10
+  offset: {x: -5, y: 0, z: 0}
+  powerPunch: 20
   anim: {fileID: 0}
   _audiosrc: {fileID: 3574624088587771290}
   kickArray:

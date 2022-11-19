@@ -6,6 +6,7 @@ public class Enemy_StunState : Enemy_BaseState
 {
     private Animator animator;
 
+    private AudioSource audiosrc;
 
     private float timeToStun;
     private float timer;
@@ -15,6 +16,10 @@ public class Enemy_StunState : Enemy_BaseState
         enemy.isStuned = true;
         timer = 0;
         timeToStun = enemy.TimeStun;
+
+        audiosrc = enemy.AudioSource;
+        audiosrc.clip = enemy.AudioClips[0];
+        audiosrc.Play();
 
         animator = enemy.Animator;
 

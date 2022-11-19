@@ -1,17 +1,20 @@
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class Enemy_TakeDamageState : Enemy_BaseState
 {
     private Transform player;
     private Rigidbody rb;
 
+
     private float radius = 100f;
-    private float power = 300f;
+    private float power = 1000f;
 
     private float timer;
-    private float cooldownDamage = 4f;
+    private float cooldownDamage = 6f;
+
+    private AudioSource audiosrc;
 
     public override void EnterState(Enemy_StateManager enemy)
     {
@@ -33,11 +36,13 @@ public class Enemy_TakeDamageState : Enemy_BaseState
 
     public override void OnTriggerEnter(Enemy_StateManager enemy, Collider collision)
     {
+
     }
 
     public override void UpdateState(Enemy_StateManager enemy)
     {
         timer += Time.fixedDeltaTime;
+
 
         if (timer >= cooldownDamage)
         {
@@ -46,6 +51,7 @@ public class Enemy_TakeDamageState : Enemy_BaseState
                 rb.isKinematic = true;
                 rb.isKinematic = false;
                 enemy.SwitchState(enemy.dieState);
+  
             }
             else
             {

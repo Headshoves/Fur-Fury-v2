@@ -1696,7 +1696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &544874848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2523,8 +2523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audio: {fileID: 1497852684}
-  _audio2: {fileID: 0}
-  _PressButton: {fileID: 8300000, guid: 1c04f4213dc072742b10f54cb842278b, type: 3}
+  _audio2: {fileID: 682760524}
+  _PressButton: {fileID: 8300000, guid: 9086883d7c7a88b449421c4827daeb2c, type: 3}
   _anim: {fileID: 1362908815}
   _aninChang: {fileID: 544874849}
   _AudioChanging: {fileID: 682760525}
@@ -2572,11 +2572,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 11319d0bfefdc1a47883beb47857a776, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 163fca969e1d70b4a8e13d384036a4db, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.154
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
