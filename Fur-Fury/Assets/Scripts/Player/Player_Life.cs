@@ -37,15 +37,24 @@ public class Player_Life : MonoBehaviour
         playerLifeImage.sprite = lifeSprites[life];
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Enemy_StateManager enemy))
+        {
+            if (!enemy.isStuned)
+            {
+                TakeDamage(1);
+            }
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         life -= damage;
-        playerLifeImage.sprite = lifeSprites[life];
-        print(life);
 
         if (life>0)
         {
-            
+            playerLifeImage.sprite = lifeSprites[life];
             if (hitClip != null)
             {
                 _audiosrc.clip = hitClip;

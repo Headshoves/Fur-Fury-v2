@@ -5,12 +5,10 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
 
-
-    private float timer;
-    private float cooldownPrepare = 7;
-    private float cooldownKeys = 30;
-    private float cooldownDica1 = 20;
-    private float cooldownDica2 = 40;
+    [SerializeField] private float cooldownPrepare = 2;
+    [SerializeField] private float cooldownKeys = 30;
+    [SerializeField] private float cooldownDica1 = 20;
+    [SerializeField] private float cooldownDica2 = 40;
 
     public GameObject Prepare;
     public GameObject Keys;
@@ -19,37 +17,21 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0;
+        StartCoroutine(UiControl());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator UiControl()
     {
-        timer += Time.fixedDeltaTime;
-
-        if (timer >= cooldownPrepare)
-        {
-            Prepare.SetActive(false);
-            dica1.SetActive(true);
-        }
-
-        if (timer >= cooldownKeys)
-        {
-            Keys.SetActive(false);
-        }
-
-        if (timer >= cooldownDica1)
-        {
-            dica1.SetActive(false);
-            dica2.SetActive(true);
-        }
-
-        if (timer >= cooldownDica2)
-        {
-            dica2.SetActive(false);
-        }
-
-
+        yield return new WaitForSeconds(cooldownPrepare);
+        Prepare.SetActive(false);
+        dica1.SetActive(true);
+        yield return new WaitForSeconds(cooldownKeys);
+        Keys.SetActive(false);
+        yield return new WaitForSeconds(cooldownDica1);
+        dica1.SetActive(false);
+        dica2.SetActive(true);
+        yield return new WaitForSeconds(cooldownDica2);
+        dica2.SetActive(false);
     }
 
 }
